@@ -48,48 +48,59 @@ This library provides a simple API to manage an OLED display based on the SSD130
    git clone githttps://github.com/Dimitri-Y/OLED-Heltec-Wireless-Stick-V3.git
 
 ### Usage / Використання
-EN: In your sketch, initialize the display and add message frames as follows:
-UA: У вашому скетчі ініціалізуйте дисплей та додайте фрейми повідомлень наступним чином:
 
-#include "DisplayManager.h"
+  EN: In your sketch, initialize the display and add message frames as follows:
+  
+  UA: У вашому скетчі ініціалізуйте дисплей та додайте фрейми повідомлень наступним чином:
+  
+  ```bash
+  #include "DisplayManager.h"
+  void setup() {
+    Serial.begin(115200);
+    initDisplay();
+    addMessageFrame("Title 1", "Message 1");
+    addMessageFrame("Title 2", "Message 2");
+  }
 
-void setup() {
-  Serial.begin(115200);
-  initDisplay();
-  addMessageFrame("Title 1", "Message 1");
-  addMessageFrame("Title 2", "Message 2");
-}
+  void loop() {
+    displayUi.update();
+    // Example: call nextFrame_over() on a button press to cycle frames.
+  }
+  ```
 
-void loop() {
-  displayUi.update();
-  // Example: call nextFrame_over() on a button press to cycle frames.
-}
 
 ## API Overview / Опис API
-# void initDisplay()
-EN: Initializes the OLED display with default configuration (FPS, indicator position, clears frames).
-UA: Ініціалізує OLED-дисплей із типовими параметрами (кадрова частота, позиція індикатора, очищення фреймів).
+### void initDisplay()
+  EN: Initializes the OLED display with default configuration (FPS, indicator position, clears frames).
+  
+  UA: Ініціалізує OLED-дисплей із типовими параметрами (кадрова частота, позиція індикатора, очищення фреймів).
 
-# void addMessageFrame(String title, String message)
-EN: Adds a new frame with title and message, and regenerates dynamic frames.
-UA: Додає новий фрейм із заголовком і повідомленням та оновлює масив фреймів.
+### void addMessageFrame(String title, String message)
+  EN: Adds a new frame with title and message, and regenerates dynamic frames.
+  
+  UA: Додає новий фрейм із заголовком і повідомленням та оновлює масив фреймів.
 
-# void drawDynamicFrame(ScreenDisplay *d, DisplayUiState *state, int16_t x, int16_t y)
-EN: Callback function that renders the frame content with text alignment.
-UA: Callback-функція для малювання фрейму з вирівнюванням заголовка та тексту.
+### void drawDynamicFrame(ScreenDisplay *d, DisplayUiState *state, int16_t x, int16_t y)
+  EN: Callback function that renders the frame content with text alignment.
+  
+  UA: Callback-функція для малювання фрейму з вирівнюванням заголовка та тексту.
 
-# void generateDynamicFrames()
-EN: Regenerates all frames from the stored messages and applies them to the display UI.
-UA: Генерує фрейми зі збережених повідомлень і застосовує їх до дисплею.
+### void generateDynamicFrames()
+  EN: Regenerates all frames from the stored messages and applies them to the display UI.
+  
+  UA: Генерує фрейми зі збережених повідомлень і застосовує їх до дисплею.
 
-# void clearDynamicFrames()
-EN: Clears all message frames and resets frame tracking.
-UA: Очищає всі фрейми та скидає лічильник кадрів.
+### void clearDynamicFrames()
+  EN: Clears all message frames and resets frame tracking.
+  
+  UA: Очищає всі фрейми та скидає лічильник кадрів.
 
-# void nextFrame_over()
-EN: Cycles to the next frame. If it’s the last one, wraps to the first.
-UA: Перемикає на наступний фрейм. Якщо останній — повертається до першого.
+### void nextFrame_over()
+  EN: Cycles to the next frame. If it’s the last one, wraps to the first.
+  
+  UA: Перемикає на наступний фрейм. Якщо останній — повертається до першого.
 
-# void VextON() / void VextOFF()
-EN: Enables or disables external power supply to OLED by toggling Vext pin.
-UA: Вмикає або вимикає зовнішнє живлення OLED через керування піном Vext.
+### void VextON() / void VextOFF()
+  EN: Enables or disables external power supply to OLED by toggling Vext pin.
+  
+  UA: Вмикає або вимикає зовнішнє живлення OLED через керування піном Vext.
