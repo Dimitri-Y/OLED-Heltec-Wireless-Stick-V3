@@ -45,7 +45,7 @@ This library provides a simple API to manage an OLED display based on the SSD130
    Клонувати репозиторій або завантажити бібліотеку через .ZIP  і скопіювати її у каталог `libraries` вашої інсталяції Arduino IDE.
    
    ```bash
-   git clone https://github.com/yourusername/DisplayManager.git
+   git clone githttps://github.com/Dimitri-Y/OLED-Heltec-Wireless-Stick-V3.git
 
 ### Usage / Використання
 EN: In your sketch, initialize the display and add message frames as follows:
